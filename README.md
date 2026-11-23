@@ -1,3 +1,6 @@
+# Solved - (Odyssey Course) Intro to GraphQL with .NET (C#) & Hot Chocolate
+This branch contains the solution to the below tutorial with the sample code implemented.
+
 # (Odyssey Course) Intro to GraphQL with .NET (C#) & Hot Chocolate 
 
 Welcome to the starter code for **Intro to GraphQL with .NET (C#) & Hot Chocolate**. You can find the [course lessons and instructions](https://apollographql.com/tutorials/intro-hotchocolate) on Odyssey, [Apollo](https://apollographql.com)'s learning platform.
