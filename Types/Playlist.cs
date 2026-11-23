@@ -18,6 +18,13 @@ public class Playlist
 		Description = obj.Description;
 	}
 
+	public Playlist(SpotifyWeb.Playlist obj)
+	{
+		Id = obj.Id;
+		Name = obj.Name;
+		Description = obj.Description;
+	}
+
 	[GraphQLDescription("The ID for the playlist.")]
 	[ID]
 	public string Id { get; }

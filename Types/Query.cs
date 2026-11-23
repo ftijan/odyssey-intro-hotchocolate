@@ -13,4 +13,12 @@ public class Query
 
 		return [.. response.Playlists.Items.Select(item => new Playlist(item))];
 	}
+
+	[GraphQLDescription("Retrieves a specific playlist.")]
+	public async Task<Playlist?> GetPlaylist([ID] string id, SpotifyService spotifyService)
+	{
+		var response = await spotifyService.GetPlaylistAsync(id);
+
+		return new Playlist(response);
+	}
 }
