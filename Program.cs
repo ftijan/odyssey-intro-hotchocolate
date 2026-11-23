@@ -1,19 +1,12 @@
-using Scalar.AspNetCore;
+using Odyssey.MusicMatcher;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddGraphQLServer();
-builder.Services.AddOpenApi();
+builder.Services.AddGraphQLServer()
+	.AddQueryType<Query>();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-	app.MapOpenApi();
-	app.MapScalarApiReference();
-}
-
-app.MapGet("/", () => "Hello World!");
 app.MapGraphQL();
 
 app.Run();
