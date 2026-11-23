@@ -1,5 +1,5 @@
 # Solved - (Odyssey Course) Intro to GraphQL with .NET (C#) & Hot Chocolate
-This branch contains the solution to the below tutorial with the sample code implemented.
+This branch contains the solution to the below tutorial with the sample code implemented (also updated the project to .Net 10).
 
 # (Odyssey Course) Intro to GraphQL with .NET (C#) & Hot Chocolate 
 
