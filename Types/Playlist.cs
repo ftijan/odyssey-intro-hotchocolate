@@ -5,6 +5,8 @@ namespace Odyssey.MusicMatcher;
 [GraphQLDescription("A curated collection of tracks designed for a specific activity or mood.")]
 public class Playlist
 {
+	private List<Track>? _tracks;
+
 	public Playlist(string id, string name)
 	{
 		Id = id;
@@ -26,7 +28,7 @@ public class Playlist
 
 		var paginatedTracks = obj.Tracks.Items;
 		var trackObjects = paginatedTracks.Select(item => new Track(item.Track));
-		Tracks = [.. trackObjects];
+		_tracks = [.. trackObjects];
 	}
 
 	[GraphQLDescription("The ID for the playlist.")]
@@ -40,5 +42,23 @@ public class Playlist
 	public string? Description { get; set; }
 
 	[GraphQLDescription("The playlist's tracks.")]
-	public List<Track> Tracks { get; set; }
+	public async Task<List<Track>> Tracks(
+		SpotifyService spotifyService
+		// A different way from the injected parent prop:
+		// [Parent] Playlist parent
+		)
+	{
+		if (_tracks != null)
+		{
+			return _tracks;
+		}
+		else
+		{
+			// A different way from the injected parent prop:
+			// parent.Id
+			var response = await spotifyService.GetPlaylistsTracksAsync(Id);
+			return [.. response.Items.Select(item => new Track(item.Track))];
+			// ...though, this leads into the N+1 problem - DataLoaders is the preferred approach
+		}
+	}
 }
