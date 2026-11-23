@@ -3,6 +3,7 @@ using SpotifyWeb;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Use this DI pattern with the newer HotChocolate versions:
 builder.Services.AddHttpClient<SpotifyService>();
 builder.Services.AddScoped<SpotifyService>();
 
