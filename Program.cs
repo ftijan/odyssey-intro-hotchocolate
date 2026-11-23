@@ -8,7 +8,8 @@ builder.Services.AddHttpClient<SpotifyService>();
 builder.Services.AddScoped<SpotifyService>();
 
 builder.Services.AddGraphQLServer()
-	.AddQueryType<Query>();
+	.AddQueryType<Query>()
+	.AddMutationType<Mutation>();
 
 var app = builder.Build();
 
